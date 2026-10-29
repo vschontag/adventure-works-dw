@@ -1,0 +1,328 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 760" width="100%" height="100%" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- Drop shadow for table cards -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <!-- Arrowhead markers -->
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1240" height="760" rx="14" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+
+  <!-- Subtle Grid / Zone Backdrops -->
+  <!-- Left Zone: B2C Channel -->
+  <rect x="24" y="72" width="356" height="664" rx="10" fill="#1e293b" fill-opacity="0.35" stroke="#334155" stroke-dasharray="4 4"/>
+  <text x="202" y="96" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1.2">B2C ONLINE CHANNEL (INTERNET SALES)</text>
+
+  <!-- Center Zone: Conformed & Snowflake Dimensions -->
+  <rect x="404" y="72" width="432" height="664" rx="10" fill="#1e293b" fill-opacity="0.22" stroke="#334155" stroke-dasharray="4 4"/>
+  <text x="620" y="96" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1.2">SHARED / CONFORMED DIMENSIONS</text>
+
+  <!-- Right Zone: B2B Channel -->
+  <rect x="860" y="72" width="356" height="664" rx="10" fill="#1e293b" fill-opacity="0.35" stroke="#334155" stroke-dasharray="4 4"/>
+  <text x="1038" y="96" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1.2">B2B WHOLESALE CHANNEL (RESELLER SALES)</text>
+
+  <!-- Top Header Bar -->
+  <rect x="0" y="0" width="1240" height="56" rx="14" fill="#1e293b"/>
+  <rect x="0" y="42" width="1240" height="14" fill="#1e293b"/>
+  <line x1="0" y1="56" x2="1240" y2="56" stroke="#334155" stroke-width="1.5"/>
+
+  <text x="28" y="34" fill="#f8fafc" font-size="18" font-weight="700">AdventureWorksDW — Commercial Star Schema Architecture</text>
+
+  <!-- Legend in Top Header -->
+  <rect x="650" y="18" width="14" height="14" rx="3" fill="#d97706"/>
+  <text x="670" y="30" fill="#e2e8f0" font-size="12" font-weight="600">Fact Tables</text>
+
+  <rect x="765" y="18" width="14" height="14" rx="3" fill="#0284c7"/>
+  <text x="785" y="30" fill="#e2e8f0" font-size="12" font-weight="600">Conformed Dimensions</text>
+
+  <rect x="945" y="18" width="14" height="14" rx="3" fill="#059669"/>
+  <text x="965" y="30" fill="#e2e8f0" font-size="12" font-weight="600">Channel / Snowflake Dimensions</text>
+
+  <!-- ===================================================================== -->
+  <!-- CONNECTING LINES & CARDINALITY BADGES                                 -->
+  <!-- ===================================================================== -->
+
+  <!-- 1. DimGeography (Center Top) -> DimCustomer (Left Top) & DimReseller (Right Top) -->
+  <path d="M 480 148 L 352 148" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="468" y="142" fill="#34d399" font-size="11" font-weight="700">1</text>
+  <text x="362" y="142" fill="#34d399" font-size="12" font-weight="700">*</text>
+
+  <path d="M 760 148 L 888 148" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="768" y="142" fill="#34d399" font-size="11" font-weight="700">1</text>
+  <text x="874" y="142" fill="#34d399" font-size="12" font-weight="700">*</text>
+
+  <!-- 2. DimCustomer -> FactInternetSales -->
+  <path d="M 202 192 L 202 246" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="210" y="206" fill="#34d399" font-size="11" font-weight="700">1</text>
+  <text x="210" y="242" fill="#34d399" font-size="12" font-weight="700">*</text>
+
+  <!-- 3. DimReseller -> FactResellerSales -->
+  <path d="M 1038 192 L 1038 246" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="1046" y="206" fill="#34d399" font-size="11" font-weight="700">1</text>
+  <text x="1046" y="242" fill="#34d399" font-size="12" font-weight="700">*</text>
+
+  <!-- 4. FactInternetSales -> FactInternetSalesReason <- DimSalesReason -->
+  <path d="M 202 478 L 202 532" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrow-gold)"/>
+  <text x="210" y="494" fill="#f59e0b" font-size="11" font-weight="700">1</text>
+  <text x="210" y="528" fill="#f59e0b" font-size="12" font-weight="700">*</text>
+
+  <path d="M 202 644 L 202 606" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="210" y="638" fill="#34d399" font-size="11" font-weight="700">1</text>
+  <text x="210" y="620" fill="#34d399" font-size="12" font-weight="700">*</text>
+
+  <!-- 5. DimEmployee -> FactResellerSales -->
+  <path d="M 1038 545 L 1038 480" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="1046" y="538" fill="#34d399" font-size="11" font-weight="700">1</text>
+  <text x="1046" y="494" fill="#34d399" font-size="12" font-weight="700">*</text>
+
+  <!-- 6. Conformed Dimensions Bus -> FactInternetSales (Left) & FactResellerSales (Right) -->
+  <!-- Vertical Trunk Lines -->
+  <path d="M 424 242 L 424 610" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+  <path d="M 816 242 L 816 610" stroke="#38bdf8" stroke-width="2.5" fill="none"/>
+
+  <!-- Trunk Entry Arrows into Fact Tables -->
+  <path d="M 424 362 L 352 362" stroke="#38bdf8" stroke-width="2.5" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="362" y="355" fill="#38bdf8" font-size="13" font-weight="700">*</text>
+
+  <path d="M 816 362 L 888 362" stroke="#38bdf8" stroke-width="2.5" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="874" y="355" fill="#38bdf8" font-size="13" font-weight="700">*</text>
+
+  <!-- Branches from 5 Conformed Dimensions to Left & Right Trunks -->
+  <!-- DimDate (y=242) -->
+  <line x1="480" y1="242" x2="424" y2="242" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="760" y1="242" x2="816" y2="242" stroke="#38bdf8" stroke-width="2"/>
+  <text x="468" y="236" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+  <text x="766" y="236" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+
+  <!-- DimSalesTerritory (y=328) -->
+  <line x1="480" y1="328" x2="424" y2="328" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="760" y1="328" x2="816" y2="328" stroke="#38bdf8" stroke-width="2"/>
+  <text x="468" y="322" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+  <text x="766" y="322" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+
+  <!-- DimPromotion (y=414) -->
+  <line x1="480" y1="414" x2="424" y2="414" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="760" y1="414" x2="816" y2="414" stroke="#38bdf8" stroke-width="2"/>
+  <text x="468" y="408" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+  <text x="766" y="408" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+
+  <!-- DimCurrency (y=500) -->
+  <line x1="480" y1="500" x2="424" y2="500" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="760" y1="500" x2="816" y2="500" stroke="#38bdf8" stroke-width="2"/>
+  <text x="468" y="494" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+  <text x="766" y="494" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+
+  <!-- DimProduct (y=610) -->
+  <line x1="480" y1="610" x2="424" y2="610" stroke="#38bdf8" stroke-width="2"/>
+  <line x1="760" y1="610" x2="816" y2="610" stroke="#38bdf8" stroke-width="2"/>
+  <text x="468" y="604" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+  <text x="766" y="604" fill="#38bdf8" font-size="11" font-weight="700">1</text>
+
+  <!-- Product Snowflake Chain: DimProductCategory -> DimProductSubcategory -> DimProduct -->
+  <path d="M 620 658 L 620 638" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="626" y="654" fill="#34d399" font-size="10" font-weight="700">1:*</text>
+
+  <!-- ===================================================================== -->
+  <!-- LEFT COLUMN CARDS (B2C CHANNEL)                                       -->
+  <!-- ===================================================================== -->
+
+  <!-- DimCustomer -->
+  <g filter="url(#shadow)">
+    <rect x="56" y="112" width="292" height="78" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.8"/>
+    <rect x="56" y="112" width="292" height="28" rx="8" fill="#059669"/>
+    <rect x="56" y="128" width="292" height="12" fill="#059669"/>
+    <text x="70" y="131" fill="#ffffff" font-size="13" font-weight="700">DimCustomer</text>
+    <text x="336" y="130" fill="#d1fae5" font-size="11" text-anchor="end">18,484 rows</text>
+    <text x="70" y="158" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">PK</tspan> CustomerKey</text>
+    <text x="70" y="176" fill="#94a3b8" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8">FK</tspan> GeographyKey | Name, Income, Gender</text>
+  </g>
+
+  <!-- FactInternetSales -->
+  <g filter="url(#shadow)">
+    <rect x="56" y="248" width="292" height="228" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2.2"/>
+    <rect x="56" y="248" width="292" height="32" rx="8" fill="#d97706"/>
+    <rect x="56" y="266" width="292" height="14" fill="#d97706"/>
+    <text x="70" y="269" fill="#ffffff" font-size="14" font-weight="700">FactInternetSales</text>
+    <text x="336" y="269" fill="#fef3c7" font-size="11" font-weight="600" text-anchor="end">60,398 rows</text>
+
+    <text x="70" y="298" fill="#fde68a" font-size="11.5" font-family="Consolas, monospace"><tspan font-weight="700">PK</tspan> SalesOrderNumber, LineNumber</text>
+    <line x1="68" y1="308" x2="336" y2="308" stroke="#334155" stroke-width="1"/>
+    <text x="70" y="326" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> OrderDateKey <tspan fill="#94a3b8">(Active)</tspan></text>
+    <text x="70" y="344" fill="#94a3b8" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8">FK</tspan> DueDateKey, ShipDateKey <tspan font-size="10">(Inactive)</tspan></text>
+    <text x="70" y="362" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> ProductKey</text>
+    <text x="70" y="380" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">FK</tspan> CustomerKey</text>
+    <text x="70" y="398" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> SalesTerritoryKey, PromotionKey</text>
+    <text x="70" y="416" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> CurrencyKey</text>
+    <line x1="68" y1="426" x2="336" y2="426" stroke="#334155" stroke-width="1"/>
+    <text x="70" y="445" fill="#fbbf24" font-size="11.5" font-family="Consolas, monospace">Σ SalesAmount, OrderQuantity</text>
+    <text x="70" y="463" fill="#fbbf24" font-size="11.5" font-family="Consolas, monospace">Σ TotalProductCost, TaxAmt, Freight</text>
+  </g>
+
+  <!-- FactInternetSalesReason (Bridge) -->
+  <g filter="url(#shadow)">
+    <rect x="56" y="534" width="292" height="70" rx="8" fill="#1e293b" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <rect x="56" y="534" width="292" height="25" rx="8" fill="#b45309"/>
+    <rect x="56" y="549" width="292" height="10" fill="#b45309"/>
+    <text x="70" y="551" fill="#ffffff" font-size="12.5" font-weight="700">FactInternetSalesReason (Bridge)</text>
+    <text x="336" y="551" fill="#fef3c7" font-size="10.5" text-anchor="end">64,515 rows</text>
+    <text x="70" y="577" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#f59e0b" font-weight="700">PK,FK</tspan> SalesOrderNumber, LineNumber</text>
+    <text x="70" y="594" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">PK,FK</tspan> SalesReasonKey</text>
+  </g>
+
+  <!-- DimSalesReason -->
+  <g filter="url(#shadow)">
+    <rect x="56" y="646" width="292" height="68" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.8"/>
+    <rect x="56" y="646" width="292" height="25" rx="8" fill="#059669"/>
+    <rect x="56" y="661" width="292" height="10" fill="#059669"/>
+    <text x="70" y="663" fill="#ffffff" font-size="12.5" font-weight="700">DimSalesReason</text>
+    <text x="336" y="663" fill="#d1fae5" font-size="10.5" text-anchor="end">10 rows</text>
+    <text x="70" y="688" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">PK</tspan> SalesReasonKey</text>
+    <text x="70" y="704" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">SalesReasonName, ReasonType</text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- CENTER COLUMN CARDS (SHARED / CONFORMED DIMENSIONS)                   -->
+  <!-- ===================================================================== -->
+
+  <!-- DimGeography (Shared Snowflake between Customer & Reseller) -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="112" width="280" height="72" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.8"/>
+    <rect x="480" y="112" width="280" height="26" rx="8" fill="#059669"/>
+    <rect x="480" y="128" width="280" height="10" fill="#059669"/>
+    <text x="494" y="130" fill="#ffffff" font-size="12.5" font-weight="700">DimGeography</text>
+    <text x="748" y="130" fill="#d1fae5" font-size="10.5" text-anchor="end">655 rows</text>
+    <text x="494" y="156" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">PK</tspan> GeographyKey</text>
+    <text x="494" y="173" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">City, StateProvince, CountryRegion</text>
+  </g>
+
+  <!-- DimDate -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="204" width="280" height="74" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <rect x="480" y="204" width="280" height="26" rx="8" fill="#0284c7"/>
+    <rect x="480" y="220" width="280" height="10" fill="#0284c7"/>
+    <text x="494" y="222" fill="#ffffff" font-size="13" font-weight="700">DimDate</text>
+    <text x="748" y="222" fill="#e0f2fe" font-size="10.5" text-anchor="end">3,652 rows</text>
+    <text x="494" y="248" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">PK</tspan> DateKey <tspan fill="#94a3b8">(FullDateAlternateKey)</tspan></text>
+    <text x="494" y="266" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">CalendarYear, Month, FiscalQuarter</text>
+  </g>
+
+  <!-- DimSalesTerritory -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="292" width="280" height="72" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <rect x="480" y="292" width="280" height="26" rx="8" fill="#0284c7"/>
+    <rect x="480" y="308" width="280" height="10" fill="#0284c7"/>
+    <text x="494" y="310" fill="#ffffff" font-size="13" font-weight="700">DimSalesTerritory</text>
+    <text x="748" y="310" fill="#e0f2fe" font-size="10.5" text-anchor="end">11 rows</text>
+    <text x="494" y="336" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">PK</tspan> SalesTerritoryKey</text>
+    <text x="494" y="353" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">Region, Country, Group (NA/EU/Pac)</text>
+  </g>
+
+  <!-- DimPromotion -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="378" width="280" height="72" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <rect x="480" y="378" width="280" height="26" rx="8" fill="#0284c7"/>
+    <rect x="480" y="394" width="280" height="10" fill="#0284c7"/>
+    <text x="494" y="396" fill="#ffffff" font-size="13" font-weight="700">DimPromotion</text>
+    <text x="748" y="396" fill="#e0f2fe" font-size="10.5" text-anchor="end">16 rows</text>
+    <text x="494" y="422" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">PK</tspan> PromotionKey</text>
+    <text x="494" y="439" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">PromotionName, DiscountPct, Type</text>
+  </g>
+
+  <!-- DimCurrency -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="464" width="280" height="72" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <rect x="480" y="464" width="280" height="26" rx="8" fill="#0284c7"/>
+    <rect x="480" y="480" width="280" height="10" fill="#0284c7"/>
+    <text x="494" y="482" fill="#ffffff" font-size="13" font-weight="700">DimCurrency</text>
+    <text x="748" y="482" fill="#e0f2fe" font-size="10.5" text-anchor="end">105 rows</text>
+    <text x="494" y="508" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">PK</tspan> CurrencyKey</text>
+    <text x="494" y="525" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">CurrencyAlternateKey (ISO), Name</text>
+  </g>
+
+  <!-- DimProduct -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="552" width="280" height="84" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <rect x="480" y="552" width="280" height="26" rx="8" fill="#0284c7"/>
+    <rect x="480" y="568" width="280" height="10" fill="#0284c7"/>
+    <text x="494" y="570" fill="#ffffff" font-size="13" font-weight="700">DimProduct</text>
+    <text x="748" y="570" fill="#e0f2fe" font-size="10.5" text-anchor="end">606 rows</text>
+    <text x="494" y="595" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">PK</tspan> ProductKey | <tspan fill="#34d399" font-weight="700">FK</tspan> SubcategoryKey</text>
+    <text x="494" y="612" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">ProductName, Color, ListPrice, Cost</text>
+    <text x="494" y="627" fill="#64748b" font-size="10.5" font-family="Consolas, monospace">ModelName, ProductLine, Status</text>
+  </g>
+
+  <!-- Product Snowflake Box (Subcategory + Category) -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="658" width="280" height="58" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.6"/>
+    <text x="494" y="678" fill="#34d399" font-size="11.5" font-weight="700">DimProductSubcategory (37) &amp; Category (4)</text>
+    <text x="494" y="696" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">PK</tspan> ProductSubcategoryKey -> <tspan fill="#34d399" font-weight="700">PK</tspan> CategoryKey</text>
+    <text x="494" y="710" fill="#94a3b8" font-size="10.5" font-family="Consolas, monospace">Bikes, Components, Clothing, Accessories</text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- RIGHT COLUMN CARDS (B2B CHANNEL)                                      -->
+  <!-- ===================================================================== -->
+
+  <!-- DimReseller -->
+  <g filter="url(#shadow)">
+    <rect x="892" y="112" width="292" height="78" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.8"/>
+    <rect x="892" y="112" width="292" height="28" rx="8" fill="#059669"/>
+    <rect x="892" y="128" width="292" height="12" fill="#059669"/>
+    <text x="906" y="131" fill="#ffffff" font-size="13" font-weight="700">DimReseller</text>
+    <text x="1172" y="130" fill="#d1fae5" font-size="11" text-anchor="end">701 rows</text>
+    <text x="906" y="158" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">PK</tspan> ResellerKey</text>
+    <text x="906" y="176" fill="#94a3b8" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8">FK</tspan> GeographyKey | BusinessType, Name</text>
+  </g>
+
+  <!-- FactResellerSales -->
+  <g filter="url(#shadow)">
+    <rect x="892" y="248" width="292" height="228" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2.2"/>
+    <rect x="892" y="248" width="292" height="32" rx="8" fill="#d97706"/>
+    <rect x="892" y="266" width="292" height="14" fill="#d97706"/>
+    <text x="906" y="269" fill="#ffffff" font-size="14" font-weight="700">FactResellerSales</text>
+    <text x="1172" y="269" fill="#fef3c7" font-size="11" font-weight="600" text-anchor="end">60,855 rows</text>
+
+    <text x="906" y="298" fill="#fde68a" font-size="11.5" font-family="Consolas, monospace"><tspan font-weight="700">PK</tspan> SalesOrderNumber, LineNumber</text>
+    <line x1="904" y1="308" x2="1172" y2="308" stroke="#334155" stroke-width="1"/>
+    <text x="906" y="326" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> OrderDateKey <tspan fill="#94a3b8">(Active)</tspan></text>
+    <text x="906" y="344" fill="#94a3b8" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8">FK</tspan> DueDateKey, ShipDateKey <tspan font-size="10">(Inactive)</tspan></text>
+    <text x="906" y="362" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> ProductKey</text>
+    <text x="906" y="380" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">FK</tspan> ResellerKey, EmployeeKey</text>
+    <text x="906" y="398" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> SalesTerritoryKey, PromotionKey</text>
+    <text x="906" y="416" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> CurrencyKey</text>
+    <line x1="904" y1="426" x2="1172" y2="426" stroke="#334155" stroke-width="1"/>
+    <text x="906" y="445" fill="#fbbf24" font-size="11.5" font-family="Consolas, monospace">Σ SalesAmount, OrderQuantity</text>
+    <text x="906" y="463" fill="#fbbf24" font-size="11.5" font-family="Consolas, monospace">Σ TotalProductCost, DiscountAmount</text>
+  </g>
+
+  <!-- DimEmployee -->
+  <g filter="url(#shadow)">
+    <rect x="892" y="546" width="292" height="90" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.8"/>
+    <rect x="892" y="546" width="292" height="28" rx="8" fill="#059669"/>
+    <rect x="892" y="562" width="292" height="12" fill="#059669"/>
+    <text x="906" y="565" fill="#ffffff" font-size="13" font-weight="700">DimEmployee</text>
+    <text x="1172" y="564" fill="#d1fae5" font-size="11" text-anchor="end">296 rows</text>
+    <text x="906" y="592" fill="#e2e8f0" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">PK</tspan> EmployeeKey</text>
+    <text x="906" y="610" fill="#94a3b8" font-size="11.5" font-family="Consolas, monospace"><tspan fill="#34d399">FK</tspan> ParentEmployeeKey (Self Hierarchy)</text>
+    <text x="906" y="626" fill="#94a3b8" font-size="11" font-family="Consolas, monospace">Title, DepartmentName, SalesPersonFlag</text>
+  </g>
+
+  <!-- Additional Fact Modules Note Card (Bottom Right) -->
+  <rect x="892" y="652" width="292" height="62" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1.2"/>
+  <text x="906" y="672" fill="#38bdf8" font-size="11.5" font-weight="700">+ Additional Analytical Fact Modules:</text>
+  <text x="906" y="690" fill="#cbd5e1" font-size="11" font-family="Consolas, monospace">• FactProductInventory (776,286 rows)</text>
+  <text x="906" y="706" fill="#cbd5e1" font-size="11" font-family="Consolas, monospace">• FactFinance (39,409) &amp; FactSalesQuota</text>
+</svg>
+

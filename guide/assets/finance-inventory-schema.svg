@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 440" width="100%" height="100%" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas -->
+  <rect width="1160" height="440" rx="14" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+
+  <!-- Top Header -->
+  <rect x="0" y="0" width="1160" height="52" rx="14" fill="#1e293b"/>
+  <rect x="0" y="38" width="1160" height="14" fill="#1e293b"/>
+  <line x1="0" y1="52" x2="1160" y2="52" stroke="#334155" stroke-width="1.5"/>
+  <text x="28" y="32" fill="#f8fafc" font-size="16.5" font-weight="700">AdventureWorksDW — Corporate Finance, Warehouse Inventory &amp; Quotas Schema</text>
+
+  <!-- Left Zone: Corporate Finance -->
+  <rect x="24" y="68" width="530" height="350" rx="10" fill="#1e293b" fill-opacity="0.32" stroke="#334155" stroke-dasharray="4 4"/>
+  <text x="289" y="90" fill="#94a3b8" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="1.1">CORPORATE FINANCE &amp; GENERAL LEDGER</text>
+
+  <!-- Right Zone: Inventory, Quotas & FX Rates -->
+  <rect x="576" y="68" width="560" height="350" rx="10" fill="#1e293b" fill-opacity="0.32" stroke="#334155" stroke-dasharray="4 4"/>
+  <text x="856" y="90" fill="#94a3b8" font-size="11.5" font-weight="700" text-anchor="middle" letter-spacing="1.1">WAREHOUSE INVENTORY, SALES QUOTAS &amp; EXCHANGE RATES</text>
+
+  <!-- Connecting Lines (Left Zone: Finance Dimensions -> FactFinance) -->
+  <path d="M 250 135 L 306 135" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="258" y="130" fill="#34d399" font-size="10.5" font-weight="700">1:*</text>
+
+  <path d="M 250 205 L 306 205" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="258" y="200" fill="#34d399" font-size="10.5" font-weight="700">1:*</text>
+
+  <path d="M 250 275 L 306 275" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="258" y="270" fill="#34d399" font-size="10.5" font-weight="700">1:*</text>
+
+  <path d="M 250 345 L 306 345" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrow-teal)"/>
+  <text x="258" y="340" fill="#34d399" font-size="10.5" font-weight="700">1:*</text>
+
+  <!-- Finance Dimensions (Left Column) -->
+  <!-- DimAccount -->
+  <g filter="url(#shadow)">
+    <rect x="42" y="106" width="208" height="58" rx="7" fill="#1e293b" stroke="#059669" stroke-width="1.6"/>
+    <text x="54" y="126" fill="#34d399" font-size="12.5" font-weight="700">DimAccount (99)</text>
+    <text x="54" y="143" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace">PK AccountKey | ParentAccountKey</text>
+    <text x="54" y="157" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">AccountDescription, AccountType</text>
+  </g>
+
+  <!-- DimOrganization -->
+  <g filter="url(#shadow)">
+    <rect x="42" y="176" width="208" height="58" rx="7" fill="#1e293b" stroke="#059669" stroke-width="1.6"/>
+    <text x="54" y="196" fill="#34d399" font-size="12.5" font-weight="700">DimOrganization (14)</text>
+    <text x="54" y="213" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace">PK OrganizationKey | ParentOrgKey</text>
+    <text x="54" y="227" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">OrganizationName, CurrencyKey</text>
+  </g>
+
+  <!-- DimDepartmentGroup -->
+  <g filter="url(#shadow)">
+    <rect x="42" y="246" width="208" height="58" rx="7" fill="#1e293b" stroke="#059669" stroke-width="1.6"/>
+    <text x="54" y="266" fill="#34d399" font-size="12.5" font-weight="700">DimDepartmentGroup (7)</text>
+    <text x="54" y="283" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace">PK DepartmentGroupKey</text>
+    <text x="54" y="297" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">ParentDeptGroupKey, DeptGroupName</text>
+  </g>
+
+  <!-- DimScenario -->
+  <g filter="url(#shadow)">
+    <rect x="42" y="316" width="208" height="58" rx="7" fill="#1e293b" stroke="#059669" stroke-width="1.6"/>
+    <text x="54" y="336" fill="#34d399" font-size="12.5" font-weight="700">DimScenario (3)</text>
+    <text x="54" y="353" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace">PK ScenarioKey</text>
+    <text x="54" y="367" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">Actual, Budget, Forecast</text>
+  </g>
+
+  <!-- FactFinance -->
+  <g filter="url(#shadow)">
+    <rect x="308" y="120" width="228" height="240" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="308" y="120" width="228" height="30" rx="8" fill="#d97706"/>
+    <rect x="308" y="138" width="228" height="12" fill="#d97706"/>
+    <text x="320" y="140" fill="#ffffff" font-size="13.5" font-weight="700">FactFinance</text>
+    <text x="524" y="140" fill="#fef3c7" font-size="10.5" font-weight="600" text-anchor="end">39,409 rows</text>
+    <text x="320" y="168" fill="#fde68a" font-size="11" font-family="Consolas, monospace"><tspan font-weight="700">PK</tspan> FinanceKey</text>
+    <line x1="318" y1="178" x2="524" y2="178" stroke="#334155" stroke-width="1"/>
+    <text x="320" y="198" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">FK</tspan> DateKey (DimDate)</text>
+    <text x="320" y="218" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">FK</tspan> AccountKey</text>
+    <text x="320" y="238" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">FK</tspan> OrganizationKey</text>
+    <text x="320" y="258" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">FK</tspan> DepartmentGroupKey</text>
+    <text x="320" y="278" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace"><tspan fill="#34d399" font-weight="700">FK</tspan> ScenarioKey</text>
+    <line x1="318" y1="292" x2="524" y2="292" stroke="#334155" stroke-width="1"/>
+    <text x="320" y="314" fill="#fbbf24" font-size="11.5" font-family="Consolas, monospace">Σ Amount</text>
+    <text x="320" y="334" fill="#94a3b8" font-size="10.5" font-family="Consolas, monospace">Date (Datetime)</text>
+  </g>
+
+  <!-- Right Zone Cards (Inventory, Sales Quota, Currency Rate) -->
+  <!-- Shared Conformed Dimensions Strip (Right Left-Side) -->
+  <g filter="url(#shadow)">
+    <rect x="596" y="110" width="210" height="72" rx="7" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <text x="608" y="130" fill="#38bdf8" font-size="12.5" font-weight="700">DimDate &amp; DimProduct</text>
+    <text x="608" y="148" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace">PK DateKey | PK ProductKey</text>
+    <text x="608" y="166" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">Daily Stock Snapshot Grain</text>
+  </g>
+  <path d="M 806 146 L 866 146" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="816" y="140" fill="#38bdf8" font-size="10.5" font-weight="700">1:*</text>
+
+  <!-- FactProductInventory -->
+  <g filter="url(#shadow)">
+    <rect x="868" y="104" width="248" height="88" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="868" y="104" width="248" height="26" rx="8" fill="#d97706"/>
+    <rect x="868" y="118" width="248" height="12" fill="#d97706"/>
+    <text x="880" y="122" fill="#ffffff" font-size="12.5" font-weight="700">FactProductInventory</text>
+    <text x="1106" y="122" fill="#fef3c7" font-size="10" font-weight="600" text-anchor="end">776,286 rows</text>
+    <text x="880" y="148" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">PK,FK</tspan> ProductKey, DateKey</text>
+    <text x="880" y="166" fill="#fbbf24" font-size="10.5" font-family="Consolas, monospace">Σ UnitsIn, UnitsOut, UnitsBalance</text>
+    <text x="880" y="182" fill="#fbbf24" font-size="10.5" font-family="Consolas, monospace">Σ UnitCost | MovementDate</text>
+  </g>
+
+  <!-- DimDate & DimEmployee -> FactSalesQuota -->
+  <g filter="url(#shadow)">
+    <rect x="596" y="214" width="210" height="72" rx="7" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <text x="608" y="234" fill="#38bdf8" font-size="12.5" font-weight="700">DimDate &amp; DimEmployee</text>
+    <text x="608" y="252" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace">PK DateKey | PK EmployeeKey</text>
+    <text x="608" y="270" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">Quarterly Sales Rep Targets</text>
+  </g>
+  <path d="M 806 250 L 866 250" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="816" y="244" fill="#38bdf8" font-size="10.5" font-weight="700">1:*</text>
+
+  <!-- FactSalesQuota -->
+  <g filter="url(#shadow)">
+    <rect x="868" y="208" width="248" height="84" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="868" y="208" width="248" height="26" rx="8" fill="#d97706"/>
+    <rect x="868" y="222" width="248" height="12" fill="#d97706"/>
+    <text x="880" y="226" fill="#ffffff" font-size="12.5" font-weight="700">FactSalesQuota</text>
+    <text x="1106" y="226" fill="#fef3c7" font-size="10" font-weight="600" text-anchor="end">163 rows</text>
+    <text x="880" y="252" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace"><tspan fill="#f59e0b" font-weight="700">PK</tspan> SalesQuotaKey | <tspan fill="#38bdf8" font-weight="700">FK</tspan> Employee, Date</text>
+    <text x="880" y="270" fill="#fbbf24" font-size="10.5" font-family="Consolas, monospace">Σ SalesAmountQuota</text>
+    <text x="880" y="284" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">CalendarYear, CalendarQuarter</text>
+  </g>
+
+  <!-- DimDate & DimCurrency -> FactCurrencyRate -->
+  <g filter="url(#shadow)">
+    <rect x="596" y="318" width="210" height="72" rx="7" fill="#1e293b" stroke="#0284c7" stroke-width="1.8"/>
+    <text x="608" y="338" fill="#38bdf8" font-size="12.5" font-weight="700">DimDate &amp; DimCurrency</text>
+    <text x="608" y="356" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace">PK DateKey | PK CurrencyKey</text>
+    <text x="608" y="374" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">Daily FX Conversion Rates</text>
+  </g>
+  <path d="M 806 354 L 866 354" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow-blue)"/>
+  <text x="816" y="348" fill="#38bdf8" font-size="10.5" font-weight="700">1:*</text>
+
+  <!-- FactCurrencyRate -->
+  <g filter="url(#shadow)">
+    <rect x="868" y="312" width="248" height="84" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="868" y="312" width="248" height="26" rx="8" fill="#d97706"/>
+    <rect x="868" y="326" width="248" height="12" fill="#d97706"/>
+    <text x="880" y="330" fill="#ffffff" font-size="12.5" font-weight="700">FactCurrencyRate</text>
+    <text x="1106" y="330" fill="#fef3c7" font-size="10" font-weight="600" text-anchor="end">14,264 rows</text>
+    <text x="880" y="356" fill="#e2e8f0" font-size="10.5" font-family="Consolas, monospace"><tspan fill="#38bdf8" font-weight="700">PK,FK</tspan> CurrencyKey, DateKey</text>
+    <text x="880" y="374" fill="#fbbf24" font-size="10.5" font-family="Consolas, monospace">Σ AverageRate, EndOfDayRate</text>
+    <text x="880" y="388" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">Date (Datetime)</text>
+  </g>
+</svg>
+
